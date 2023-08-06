@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, send_file, request, redirect
+from flask import Blueprint, render_template, request, redirect
 from QR_gen import QRgen, vcardGen
 
 views = Blueprint(__name__, 'views')
