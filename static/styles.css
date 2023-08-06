@@ -1,0 +1,58 @@
+body, html{
+    width: 100%;
+    height: 100%;
+    color:#444;
+}
+
+body{
+    display: grid;
+    justify-items: center;
+}
+
+form{
+    width: 65%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: #444;
+    background-color: rgb(239, 240, 240);
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    height: fit-content;
+}
+
+span{
+    color: #888;
+}
+
+.page-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 65%;
+}
+
+.form-choice{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5% 0 0 0;
+    height: 1%;
+    width: 65%;
+    height: 50%;
+}
+
+.form-choice div{
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 2% 0 0 0;
+}
+
+.btn-dark{
+    margin: 0 0 3% 0;
+}
+
+.mb-3{
+    width: 70%;
+}

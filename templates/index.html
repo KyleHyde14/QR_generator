@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</head>
+<body>
+    <div class="form-choice">
+        <h2>Choose what you want to show with your QRcode</h2>
+        <div>
+        <label>
+            <input class="input-choice" type="radio" name="type" value="plain" checked>Plain Text   
+        </label>
+        <label>
+            <input class="input-choice" type="radio" name="type" value="url"> URL    
+        </label>
+        <label>
+            <input class="input-choice" type="radio" name="type" value="vcard"> Virtual Card
+        </label>
+        </div>
+    </div>
+    <form action="/api" method="POST" id="text-form" style="display: flex">
+        <div class="mb-3">
+            <label for="inputText" class="form-label">Text *</label>
+            <input type="text" class="form-control" id="text-input" name="text" placeholder="The text to show" required>
+        </div>
+        <div class="mb-3">
+            <label for="inputNum" class="form-label">Scale *</label>
+            <input type="number" class="form-control" id="number-input" name="scale" min="1" max="12" placeholder="The scale of your code" required>
+            <small class="form-text text-muted">Choose a value between 1 and 12</small>
+        </div>
+        <button type="submit" class="btn btn-dark">Create QR</button>
+    </form>
+    <form action="/api" method="POST" id="url-form" style="display: none">
+        <div class="mb-3">
+            <label for="inputTexto" class="form-label">URL to redirect *</label>
+            <input type="text" class="form-control" id="text-input" name="text" placeholder="Use only Http or Https" pattern="https?://.+">
+            <small class="form-text text-muted">Please enter a valid URL starting with http:// or https://</small>
+        </div>
+        <div class="mb-3">
+            <label for="inputNumero" class="form-label">Scale *</label>
+            <input type="number" class="form-control" id="number-input" name="scale" min="1" max="12" placeholder="The scale of your code" required>
+            <small class="form-text text-muted">Choose a value between 1 and 12</small>
+        </div>
+        <button type="submit" class="btn btn-dark">Create QR</button>
+    </form>
+    <form action="/api" method="POST" id="vcard-form" style="display: none; margin: 3% 0 2% 0;">
+        <div class="mb-3">
+            <label for="full-name" class="form-label">Full Name *</label>
+            <input type="text" class="form-control" id="full-name" name="full-name" placeholder="Enter your full name" required>
+        </div>
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Enter your role or your job">
+        </div>
+        <div class="mb-3">
+            <label for="phone-number" class="form-label">Phone Number *</label>
+            <input type="tel" class="form-control" id="phone-number" name="phone-number" placeholder="Enter your phone number" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email *</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="mb-3">
+            <label for="website" class="form-label">Website</label>
+            <input type="text" class="form-control" id="website" name="website" placeholder="Your website if you have one" pattern="https?://.+">
+            <small class="form-text text-muted">Please enter a valid URL starting with http:// or https://</small>
+        </div>
+        <div class="mb-3">
+            <label for="notes" class="form-label">Notes</label>
+            <textarea class="form-control" id="notes" name="notes" placeholder="Some extra info that you want to share"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="scale" class="form-label">Scale *</label>
+            <input type="number" class="form-control" id="scale" name="scale" min="1" max="12" placeholder="The scale of your code" required>
+            <small class="form-text text-muted">Choose a value between 1 and 12</small>
+        </div>
+        <button type="submit" class="btn btn-dark">Create QR</button>
+    </form>
+    <div class="page-text">
+        <h2>Hey! here is a quick and simple qrcode generator.</h2>
+        <h6>Don't worry, I won't store any data from any form, you can check the entire source 
+            code of this site at <a href="">Put link here</a>. Once download your QR image 
+            everything will be deleted from this page. Have a nice day with your new QR!</h6>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+</body>
+</html>
