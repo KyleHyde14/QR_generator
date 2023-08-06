@@ -10,5 +10,5 @@ delete_thread = threading.Thread(target=execute_delete, daemon=True)
 delete_thread.start()
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
 
