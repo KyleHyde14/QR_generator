@@ -1,9 +1,16 @@
-import qrcode, vobject
+import qrcode, vobject, re
 
-def QRgen(text, scale=10):
+regex = r'(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})(\.[a-zA-Z0-9]{2,})?' 
+compiled_re = re.compile(regex)
+
+def QRgen(text, scale=10, url=False):
     global QRcounter
-    if text.startswith('http'):
-        code = qrcode.make(text, box_size=scale)
+    global compiled_re
+    if url:
+            if re.match(compiled_re, text):
+                code = qrcode.make(text)
+            else:
+                 return None
     else:
         code = qrcode.make(f'- {text}')
 
@@ -11,6 +18,7 @@ def QRgen(text, scale=10):
     
 def vcardGen(data, scale=10):
     global QRcounter
+    global compiled_re
     vcard = vobject.vCard()
 
     for k,v in data.items():

@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, jsonify
 from QR_gen import QRgen, vcardGen
 
 views = Blueprint(__name__, 'views')
@@ -22,25 +22,49 @@ def createQR():
                 'URL': request.form.get("website"),
                 'NOTES': request.form.get("notes")
             }
-            scale = int(request.form.get('scale'))
+            scale = 10
 
             img = vcardGen(data, scale)
             QRcounter +=1
             img_name = f'QR{QRcounter}.png'
             img.save(f'static/images/{img_name}')
 
-            return render_template('qr.html', QRname=img_name )
+            result = {
+                'success': True,
+                'qr_img': f'static/images/{img_name}'
+            }
+
+            return jsonify(result) 
 
         else:
-            data = request.form.get('text')
-            scale = int(request.form.get('scale'))
+            scale = 10
+            url = False
+            if request.form.get('url'):
+                url = True
 
-            img = QRgen(data, scale)
-            QRcounter +=1
-            img_name = f'QR{QRcounter}.png'
-            img.save(f'static/images/{img_name}')
+            if url:
+                data = request.form.get('url')
+            else:
+                data = request.form.get('text')
 
-            return render_template('qr.html', QRname=img_name )
+            img = QRgen(data, scale, url)
+            if(img):
+                QRcounter +=1
+                img_name = f'QR{QRcounter}.png'
+                img.save(f'static/images/{img_name}')
+
+                result = {
+                    'success': True,
+                    'qr_img': f'static/images/{img_name}'
+                }
+
+            else:
+                result = {
+                    'success': False,
+                    'message': 'URL pattern must be: Https://example.ex'
+                }
+            
+            return jsonify(result)
             
         
 
