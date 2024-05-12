@@ -22,6 +22,9 @@
                 <label>
                     <input class="input-choice" type="radio" name="type" value="vcard"> Virtual Card
                 </label>
+                <label>
+                    <input class="input-choice" type="radio" name="type" value="label"> Label info
+                </label>
             </div>
         </div>
         <form class="qr_form" method="POST" id="text-form" style="display: flex">
@@ -62,6 +65,29 @@
             <div class="form_input">
                 <label for="notes" class="form-label">Notes</label>
                 <textarea id="notes" name="notes" placeholder="Some extra info that you want to share"></textarea>
+            </div>
+            <button type="button" id="create" class="create" onclick="generateQr()">Create QR</button>
+        </form>
+        <form class="qr_form" method="POST" id="label-form" style="display: none; margin: 3% 0 2% 0;">
+            <div class="form_input">
+                <label for="ref" class="form-label">Reference Number *</label>
+                <input type="text" autocomplete="off" id="ref" name="ref" placeholder="Enter the reference number" required>
+            </div>
+            <div class="form_input">
+                <label for="model" class="form-label">Model *</label>
+                <input type="text" autocomplete="off" id="model" name="model" placeholder="First 4 digits from the reference number" required>
+            </div>
+            <div class="form_input">
+                <label for="color" class="form-label">Color *</label>
+                <input type="text" id="color" name="color" placeholder="Enter the color" required>
+            </div>
+            <div class="form_input">
+                <label for="combine" class="form-label">To combine *</label>
+                <input type="text" id="combine" name="combine" placeholder="The ref number of a good fit" required>
+            </div>
+            <div class="form_input">
+                <label for="quality" class="form-label">Quality *</label>
+                <textarea id="quality" name="quality" placeholder="Enter the materials of the piece separated by a coma" required></textarea>
             </div>
             <button type="button" id="create" class="create" onclick="generateQr()">Create QR</button>
         </form>

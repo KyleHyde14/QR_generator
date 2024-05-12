@@ -11,9 +11,5 @@ def deleteQR():
             if time.time() - creation >= 7200:
                 os.remove(QRroute)
 
-def execute_delete():
-    waiting = 21600
-
-    while True:
-        deleteQR()
-        time.sleep(waiting)
+if __name__ == '__main__':
+    deleteQR()

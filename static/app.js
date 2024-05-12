@@ -3,33 +3,35 @@ let radios = document.getElementsByName('type')
 let textForm = document.getElementById('text-form')
 let urlForm = document.getElementById('url-form')
 let vcardForm = document.getElementById('vcard-form')
+let labelForm = document.getElementById('label-form')
 
 radios[0].addEventListener('click', () => {
-    radios[1].checked = 'false'
-    radios[2].checked = 'false'
-    radios[0].checked = 'true'
     textForm.style.display = 'flex'
     urlForm.style.display = 'none'
     vcardForm.style.display = 'none'
+    labelForm.style.display = 'none'
     currentForm = textForm
 })
 radios[1].addEventListener('click', () => {
-    radios[0].checked = 'false'
-    radios[2].checked = 'false'
-    radios[1].checked = 'true'
     textForm.style.display = 'none'
     urlForm.style.display = 'flex'
     vcardForm.style.display = 'none'
+    labelForm.style.display = 'none'
     currentForm = urlForm
 })
 radios[2].addEventListener('click', () => {
-    radios[0].checked = 'false'
-    radios[1].checked = 'false'
-    radios[2].checked = 'true'
     textForm.style.display = 'none'
     urlForm.style.display = 'none'
     vcardForm.style.display = 'flex'
+    labelForm.style.display = 'none'
     currentForm = vcardForm
+})
+radios[3].addEventListener('click', () => {
+    textForm.style.display = 'none'
+    urlForm.style.display = 'none'
+    vcardForm.style.display = 'none'
+    labelForm.style.display = 'flex'
+    currentForm = labelForm
 })
 radios[0].click()
 
@@ -38,15 +40,16 @@ const link = document.getElementById('link')
 
 async function generateQr(){
     const formData = new FormData(currentForm);
+    formData.append('id', currentForm.id)
 
     const options = {
         method: "POST",
-        body: formData,
+        body: formData
     };
 
     const response = await fetch("/api", options);
 
-    if (response.ok) {
+    if (response.ok){
         const data = await response.json()
         if(data['success']){
             qr_rectangle.innerHTML = `<img src= ${data['qr_img']} ></img>`
