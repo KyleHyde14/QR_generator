@@ -58,7 +58,6 @@ def createQR():
             CO = request.form.get('color')
             COMBINE = request.form.get('combine')
             data = f'https://hostingurl.com/?REF={REF}&MO={MO}&CA={CA}&CO={CO}&COMBINE={COMBINE}'
-            print(data)
             img = QRgen(data, url)
             if(img):
                 QRcounter +=1
