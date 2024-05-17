@@ -8,7 +8,7 @@ def deleteQR():
         for elem in os.listdir(route):
             QRroute = os.path.join(route, elem)
             creation = os.path.getctime(QRroute)
-            if time.time() - creation >= 7200:
+            if time.time() - creation >= 72:
                 os.remove(QRroute)
 
 if __name__ == '__main__':

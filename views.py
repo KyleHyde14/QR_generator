@@ -57,7 +57,7 @@ def createQR():
             CA = request.form.get('quality')
             CO = request.form.get('color')
             COMBINE = request.form.get('combine')
-            data = f'https://hostingurl.com/?REF={REF}&MO={MO}&CA={CA}&CO={CO}&COMBINE={COMBINE}'
+            data = f'https://dynamic-label.onrender.com/?REF={REF}&MO={MO}&CA={CA}&CO={CO}&COMBINE={COMBINE}'
             img = QRgen(data, url)
             if(img):
                 QRcounter +=1
