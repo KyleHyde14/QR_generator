@@ -52,11 +52,11 @@ def createQR():
                 }
                 return jsonify(result)
             url = True
-            REF = request.form.get('ref')
-            MO = request.form.get('model')
-            CA = request.form.get('quality')
-            CO = request.form.get('color')
-            COMBINE = request.form.get('combine')
+            REF = request.form.get('ref').strip()
+            MO = request.form.get('model').strip()
+            CA = request.form.get('quality').strip()
+            CO = request.form.get('color').strip()
+            COMBINE = request.form.get('combine').strip()
             data = f'https://dynamic-label.onrender.com/?REF={REF}&MO={MO}&CA={CA}&CO={CO}&COMBINE={COMBINE}'
             img = QRgen(data, url)
             if(img):
