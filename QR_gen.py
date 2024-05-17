@@ -3,7 +3,7 @@ import qrcode, vobject, re
 regex = r'(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})(\.[a-zA-Z0-9]{2,})?' 
 compiled_re = re.compile(regex)
 
-def QRgen(text, scale=10, url=False):
+def QRgen(text, url=False):
     global QRcounter
     global compiled_re
     if url:

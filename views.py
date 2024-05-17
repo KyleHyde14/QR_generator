@@ -78,7 +78,6 @@ def createQR():
             return jsonify(result)
 
         else:
-            scale = 10
             url = False
             if request.form.get('id') == 'url-form':
                 url = True
@@ -88,7 +87,7 @@ def createQR():
             else:
                 data = request.form.get('text')
 
-            img = QRgen(data, scale, url)
+            img = QRgen(data, url)
             if(img):
                 QRcounter +=1
                 img_name = f'QR{QRcounter}.png'
