@@ -74,20 +74,8 @@
                 <input type="text" autocomplete="off" id="ref" name="ref" placeholder="Enter the reference number" required>
             </div>
             <div class="form_input">
-                <label for="model" class="form-label">Model *</label>
-                <input type="text" autocomplete="off" id="model" name="model" placeholder="First 4 digits from the reference number" required>
-            </div>
-            <div class="form_input">
-                <label for="color" class="form-label">Color *</label>
-                <input type="text" id="color" name="color" placeholder="Enter the color" required>
-            </div>
-            <div class="form_input">
-                <label for="combine" class="form-label">To combine *</label>
-                <input type="text" id="combine" name="combine" placeholder="The ref number of a good fit" required>
-            </div>
-            <div class="form_input">
-                <label for="quality" class="form-label">Quality *</label>
-                <textarea id="quality" name="quality" placeholder="Enter the materials of the piece separated by a coma" required></textarea>
+                <label for="desc" class="form-label">Description *</label>
+                <textarea id="desc" name="desc" placeholder="Enter a detailed description about the product" required></textarea>
             </div>
             <button type="button" id="create" class="create" onclick="generateQr()">Create QR</button>
         </form>

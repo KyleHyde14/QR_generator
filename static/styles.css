@@ -126,7 +126,7 @@ form textarea{
     margin: 5%;
     border: none;
     outline: 1px #ccc solid;
-    padding: 1%;
+    padding: 1% 2%;
     max-width: 350px;
 }
 
