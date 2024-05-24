@@ -54,6 +54,7 @@ def createQR():
             url = True
             REF = request.form.get('ref').strip()
             DESC = request.form.get('desc').strip().replace(' ', '_')
+            DESC = DESC[0].upper() + DESC[1:]
             data = f'https://dynamic-label.onrender.com/?REF={REF}&DESC={DESC}'
             img = QRgen(data, url)
             if(img):
